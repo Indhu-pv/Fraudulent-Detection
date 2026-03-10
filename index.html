@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraudulent Detection System</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>FindSecure</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-target="auth-view"><i class="fa-solid fa-user-lock"></i> Authentication</li>
+                <li data-target="user-dashboard-view"><i class="fa-solid fa-wallet"></i> User Dashboard</li>
+                <li data-target="admin-dashboard-view"><i class="fa-solid fa-chart-line"></i> Admin Monitor</li>
+                <li data-target="user-details-view"><i class="fa-solid fa-id-card"></i> User Details</li>
+                <li data-target="action-guide-view"><i class="fa-solid fa-list-check"></i> Action Guidelines</li>
+            </ul>
+            <div class="compliance-footer">
+                <p><i class="fa-solid fa-certificate"></i> PCI DSS Compliant</p>
+                <p><i class="fa-solid fa-check-shield"></i> ISO/IEC 27001</p>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <h1 id="page-title">Authentication</h1>
+                <div class="user-profile">
+                    <span class="status-badge pulse-safe">System Secure</span>
+                    <i class="fa-solid fa-bell notification-icon"></i>
+                    <div class="avatar" id="avatar-btn" style="cursor: pointer;"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Alerts Sidebar -->
+            <div class="alerts-sidebar" id="alerts-sidebar">
+                <h3>Real-Time Alerts</h3>
+                <div class="alert-list" id="alert-list">
+                    <!-- Alerts injected here -->
+                </div>
+            </div>
+
+            <!-- Views Container -->
+            <div class="views-container">
+
+                <!-- Authentication View -->
+                <section id="auth-view" class="view active">
+                    <div class="auth-container">
+                        <div class="auth-box">
+                            <h2><i class="fa-solid fa-lock"></i> Secure Gateway</h2>
+                            <p>Enter your credentials to access the system.</p>
+                            <form id="login-form">
+                                <div class="input-group">
+                                    <label for="username">Username</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-user field-icon"></i>
+                                        <input type="text" id="username" required placeholder="admin">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-key field-icon"></i>
+                                        <input type="password" id="password" required placeholder="••••••••">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Authenticate <i
+                                        class="fa-solid fa-arrow-right"></i></button>
+                            </form>
+                            <div class="auth-footer">
+                                <a href="#">Forgot Credentials?</a> | <a href="#">Request Access</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Payment Details View -->
+                <section id="payment-details-view" class="view">
+                    <div class="auth-container">
+                        <div class="auth-box" style="max-width: 600px;">
+                            <h2><i class="fa-solid fa-credit-card"></i> Payment Details</h2>
+                            <p>Please enter your payment information to proceed.</p>
+                            <form id="payment-details-form">
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="atm-card">ATM Card Number</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-credit-card field-icon"></i>
+                                            <input type="text" id="atm-card" required placeholder="1234 5678 9101 1121">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="acc-number">Account Number</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-building-columns field-icon"></i>
+                                            <input type="text" id="acc-number" required placeholder="0987654321">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="sender-mobile">Sender Mobile Number</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-mobile-screen-button field-icon"></i>
+                                            <input type="tel" id="sender-mobile" required placeholder="+1 234 567 8900">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="receiver-mobile">Receiver Mobile Number</label>
+                                        <div class="input-wrapper">
+                                            <i class="fa-solid fa-mobile-screen-button field-icon"></i>
+                                            <input type="tel" id="receiver-mobile" required
+                                                placeholder="+1 098 765 4321">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Proceed to Dashboard <i
+                                        class="fa-solid fa-arrow-right"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- User Dashboard View -->
+                <section id="user-dashboard-view" class="view">
+                    <div class="dashboard-grid">
+
+                        <!-- Transaction Initiation -->
+                        <div class="card form-card">
+                            <h3><i class="fa-solid fa-money-bill-transfer"></i> Initiate Transaction</h3>
+                            <form id="transaction-form">
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="txn-amount">Amount (USD)</label>
+                                        <input type="number" id="txn-amount" required step="0.01" min="1"
+                                            placeholder="0.00">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="txn-location">Location (IP / Geo)</label>
+                                        <input type="text" id="txn-location" required placeholder="e.g. New York, US">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="txn-time">Time</label>
+                                        <input type="time" id="txn-time" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="txn-frequency">Txns past 24h</label>
+                                        <input type="number" id="txn-frequency" required min="0" value="0">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-paper-plane"></i>
+                                    Submit Request</button>
+                            </form>
+                        </div>
+
+                        <!-- Real-Time Status -->
+                        <div class="card status-card">
+                            <h3>Transaction Status</h3>
+                            <div class="status-display" id="current-status">
+                                <div class="spinner" id="status-spinner" style="display: none;"></div>
+                                <div class="status-icon" id="status-icon"><i class="fa-solid fa-circle-notch"></i></div>
+                                <h2 id="status-text">Awaiting Input</h2>
+                                <p id="status-desc">Submit a transaction to analyze risk.</p>
+                                <div class="risk-score-meter">
+                                    <div class="meter-bar" id="risk-meter-bar" style="width: 0%;"></div>
+                                </div>
+                                <span class="risk-score-value" id="risk-score-value">Score: --</span>
+                            </div>
+                        </div>
+
+                        <!-- Transaction History -->
+                        <div class="card history-card full-width">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-clock-rotate-left"></i> Transaction History</h3>
+                                <div class="search-box">
+                                    <i class="fa-solid fa-search"></i>
+                                    <input type="text" id="search-history" placeholder="Search transactions...">
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Time & Date</th>
+                                            <th>Location</th>
+                                            <th>Amount</th>
+                                            <th>Score</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="history-tbody">
+                                        <!-- Rows generated via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Admin Monitoring Dashboard View -->
+                <section id="admin-dashboard-view" class="view">
+                    <!-- Stats summary -->
+                    <div class="stats-row">
+                        <div class="stat-box safe">
+                            <div class="stat-icon"><i class="fa-solid fa-shield"></i></div>
+                            <div class="stat-info">
+                                <h4>Safe Transactions</h4>
+                                <h2 id="stat-safe">24,591</h2>
+                            </div>
+                        </div>
+                        <div class="stat-box warning">
+                            <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <div class="stat-info">
+                                <h4>Flagged (Review)</h4>
+                                <h2 id="stat-flagged">142</h2>
+                            </div>
+                        </div>
+                        <div class="stat-box danger">
+                            <div class="stat-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
+                            <div class="stat-info">
+                                <h4>Fraud Prevented</h4>
+                                <h2 id="stat-fraud">85</h2>
+                            </div>
+                        </div>
+                        <div class="stat-box info">
+                            <div class="stat-icon"><i class="fa-solid fa-server"></i></div>
+                            <div class="stat-info">
+                                <h4>System Load</h4>
+                                <h2>12%</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Risk Score Graph -->
+                        <div class="card chart-card">
+                            <h3><i class="fa-solid fa-chart-line"></i> Risk Score Fluctuation</h3>
+                            <div class="chart-container">
+                                <canvas id="riskScoreChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Behavioral Pattern Chart -->
+                        <div class="card chart-card">
+                            <h3><i class="fa-solid fa-chart-area"></i> Behavioral Patterns (Amount vs Freq)</h3>
+                            <div class="chart-container">
+                                <canvas id="behaviorChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Fraud Reports -->
+                        <div class="card reports-card full-width">
+                            <h3><i class="fa-solid fa-file-shield"></i> Suspicious Activity Reports</h3>
+                            <div class="table-responsive">
+                                <table id="reports-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Txn ID</th>
+                                            <th>Threat Level</th>
+                                            <th>Triggered Rule</th>
+                                            <th>Geoloc</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="reports-tbody">
+                                        <!-- Rows generated via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- User Details View -->
+                <section id="user-details-view" class="view">
+                    <div class="dashboard-grid">
+                        <div class="card full-width" style="padding: 40px;">
+                            <h3
+                                style="font-size: 1.5rem; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 15px;">
+                                <i class="fa-solid fa-id-card"></i> User Profile & Details
+                            </h3>
+                            <div class="user-details-content"
+                                style="display: flex; gap: 40px; margin-top: 20px; align-items: flex-start; flex-wrap: wrap;">
+                                <div style="text-align: center; min-width: 200px; flex: 1;">
+                                    <div class="avatar"
+                                        style="width: 150px; height: 150px; font-size: 4rem; margin: 0 auto 20px; border: 4px solid var(--accent); background: var(--bg-color);">
+                                        <i class="fa-solid fa-user" style="color: var(--accent);"></i>
+                                    </div>
+                                    <span class="status-badge pulse-safe"
+                                        style="font-size: 1rem; padding: 6px 15px; display: inline-block;">Verified
+                                        User</span>
+                                </div>
+                                <div
+                                    style="flex: 3; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Full Name</p>
+                                        <p style="font-size: 1.15rem; font-weight: 600;">Indhu</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Email Address</p>
+                                        <p style="font-size: 1.15rem; font-weight: 600;">indhu.mathi@findsecure.com</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Linked Phone Number</p>
+                                        <p style="font-size: 1.15rem; font-weight: 600;">+91 9878007865</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Account Type</p>
+                                        <p style="font-size: 1.15rem; font-weight: 600; color: var(--accent);">Premium
+                                            Checking</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Account Created Date</p>
+                                        <p style="font-size: 1.15rem; font-weight: 600;">Jan 15, 2026</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Overall Risk Category</p>
+                                        <p style="font-size: 1.15rem; font-weight: 700; color: var(--safe);"><i
+                                                class="fa-solid fa-shield"></i> Low Risk</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Last Login IP</p>
+                                        <p style="font-size: 1.15rem; font-weight: 600;">192.168.1.45 (New York, US)</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em;">
+                                            Authentication Mode</p>
+                                        <p style="font-size: 1.15rem; font-weight: 600;">Biometrics + 2FA</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Action Guidelines View -->
+                <section id="action-guide-view" class="view">
+                    <div class="card full-width" style="padding: 40px;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;">
+                            <i class="fa-solid fa-list-check"></i> Resolution Action Guidelines
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                            Follow these strict protocols when encountering different transaction risk levels to ensure user security and compliance.
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <!-- Safe Guideline -->
+                            <div style="border: 1px solid var(--safe); border-radius: 8px; padding: 20px; background: rgba(16, 185, 129, 0.05);">
+                                <h4 style="color: var(--safe); font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fa-solid fa-shield"></i> Safe Transactions (Green)
+                                </h4>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                    <div>
+                                        <p style="font-weight: 600; margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color: var(--safe);"></i> What to Do</p>
+                                        <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                                            <li>Allow the transaction to proceed normally.</li>
+                                            <li>Log the transaction details in the system history.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p style="font-weight: 600; margin-bottom: 8px;"><i class="fa-solid fa-circle-xmark" style="color: var(--danger);"></i> What NOT to Do</p>
+                                        <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                                            <li>Do not contact the user for verification.</li>
+                                            <li>Do not apply any temporary holds on the account.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Warning Guideline -->
+                            <div style="border: 1px solid var(--warning); border-radius: 8px; padding: 20px; background: rgba(245, 158, 11, 0.05);">
+                                <h4 style="color: var(--warning); font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Warning Transactions (Yellow)
+                                </h4>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                    <div>
+                                        <p style="font-weight: 600; margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color: var(--warning);"></i> What to Do</p>
+                                        <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                                            <li>Temporarily hold the transaction in pending state.</li>
+                                            <li>Call the user immediately or trigger an OTP to their registered mobile number.</li>
+                                            <li>Investigate location mismatch or sudden high transaction amounts.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p style="font-weight: 600; margin-bottom: 8px;"><i class="fa-solid fa-circle-xmark" style="color: var(--danger);"></i> What NOT to Do</p>
+                                        <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                                            <li>Do NOT approve the transaction without explicit user consent.</li>
+                                            <li>Do not instantly assume fraud and panic the user; remain professional.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Danger Guideline -->
+                            <div style="border: 1px solid var(--danger); border-radius: 8px; padding: 20px; background: rgba(239, 68, 68, 0.05);">
+                                <h4 style="color: var(--danger); font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fa-solid fa-skull-crossbones"></i> Danger Transactions (Red)
+                                </h4>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                    <div>
+                                        <p style="font-weight: 600; margin-bottom: 8px;"><i class="fa-solid fa-circle-check" style="color: var(--danger);"></i> What to Do</p>
+                                        <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                                            <li>Instantly block the transaction and freeze the ATM card/account.</li>
+                                            <li>Generate a Suspicious Activity Report (SAR) for the security team.</li>
+                                            <li>Notify the user formally about the security breach attempt and require them to visit a branch or reset credentials.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p style="font-weight: 600; margin-bottom: 8px;"><i class="fa-solid fa-circle-xmark" style="color: var(--danger);"></i> What NOT to Do</p>
+                                        <ul style="padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
+                                            <li>Under strict compliance, DO NOT process the funds.</li>
+                                            <li>Do not remove the block until full 100-point identity verification is completed.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Theme Toggler -->
+    <div class="theme-toggle" id="theme-toggle">
+        <i class="fa-solid fa-sun" id="theme-icon"></i>
+    </div>
+
+    <!-- JS script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

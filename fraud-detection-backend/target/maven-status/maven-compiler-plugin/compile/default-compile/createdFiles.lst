@@ -1,0 +1,4 @@
+com\findsecure\fraudbackend\TransactionRepository.class
+com\findsecure\fraudbackend\Transaction.class
+com\findsecure\fraudbackend\TransactionController.class
+com\findsecure\fraudbackend\FraudbackendApplication.class
