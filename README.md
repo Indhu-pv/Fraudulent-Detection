@@ -19,7 +19,6 @@ Frontend:
 - HTML
 - CSS
 - JavaScript
-- Chart.js
 
 Backend:
 - Java
